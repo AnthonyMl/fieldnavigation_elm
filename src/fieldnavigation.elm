@@ -146,13 +146,14 @@ drawObstacle obstacle =
 
 
 drawGrid : Model -> Form
-drawGrid model =
+drawGrid =
   let
     numbers = List.map (\x -> x + 0.5) [-gridSize..gridSize]
     centers = cartesianProduct numbers numbers
     segmentStyle = { defaultLine | color <- (rgb 200 200 200), width <- 0.05}
+    t = traced segmentStyle
   in
-    group <| List.map (\p -> traced segmentStyle <| segment p <| Vec2.add p <| Vec2.scale 0.8 <| forceDirection model p) centers
+    \model -> (group <| List.map (\p -> t <| segment p <| Vec2.add p <| Vec2.scale 0.8 <| forceDirection model p) centers)
 
 ------------------------------------------------------------------------------
 -- SIGNALS
