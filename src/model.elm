@@ -1,18 +1,22 @@
 module Model where
 
 
-type alias Position = (Float, Float)
-type alias Velocity = (Float, Float)
+type alias CircleData = {
+  position : (Float, Float),
+  velocity : (Float, Float),
+  radius   : Float
+}
 
-type alias CircleData = (Position, Velocity, Float)
-
-type alias SegmentData = (Position, Position, Float)
+type alias SegmentData = {
+  a     : (Float, Float),
+  b     : (Float, Float),
+  width : Float
+}
 
 type Obstacle = Circle CircleData | Segment SegmentData
 
 type alias Model = {
-  robotSpeed : Float,
-  robot      : Position,
-  goal       : CircleData,
-  obstacles  : List Obstacle
+  robotPosition : (Float, Float),
+  goal          : CircleData,
+  obstacles     : List Obstacle
   }

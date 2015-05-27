@@ -1,4 +1,4 @@
-module Vec2 where
+module Vec2 ( add, sub, scale, dot, length, normalize ) where
 
 
 apply f (ax, ay) (bx, by) = (f ax bx, f ay by)
@@ -8,7 +8,7 @@ sub a b = apply (-) a b
 
 scale s (x, y) = (s * x, s * y)
 
-dot (ax, ay) (bx, by) = ax*bx + ay*by
+dot (ax, ay) (bx, by) = ax * bx + ay * by
 
 length v = sqrt <| dot v v
 
